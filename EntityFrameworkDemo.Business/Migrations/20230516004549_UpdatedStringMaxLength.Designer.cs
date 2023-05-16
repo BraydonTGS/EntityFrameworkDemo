@@ -3,6 +3,7 @@ using EntityFrameworkDemo.Business.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EntityFrameworkDemo.Business.Migrations
 {
     [DbContext(typeof(SubSystemDbContext))]
-    partial class SubSystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230516004549_UpdatedStringMaxLength")]
+    partial class UpdatedStringMaxLength
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

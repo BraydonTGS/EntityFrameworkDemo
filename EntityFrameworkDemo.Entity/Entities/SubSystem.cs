@@ -13,9 +13,11 @@ namespace EntityFrameworkDemo.Entity.Entities
 
         [Required]
         [Column("Name")]
+        [MaxLength(100)]
         public string Name { get; set; } = string.Empty;
 
         [Column("Description")]
+        [MaxLength(500)]
         public string? Description { get; set; }
 
         public virtual ICollection<Device>? Devices { get; set; }
