@@ -1,6 +1,4 @@
-﻿using EntityFrameworkDemo.Business.SubSystem.Dto;
-
-namespace EntityFrameworkDemo.Business.Device.Dto
+﻿namespace EntityFrameworkDemo.Business.Dto
 {
     public class DeviceDto
     {

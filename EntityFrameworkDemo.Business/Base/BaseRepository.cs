@@ -1,12 +1,15 @@
-﻿using EntityFrameworkDemo.Business.Interfaces;
+﻿using EntityFrameworkDemo.Business.Context;
+using EntityFrameworkDemo.Business.Interfaces;
 
 namespace EntityFrameworkDemo.Business.Base
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
-        public BaseRepository()
+        private readonly SubSystemDbContext _context;
+
+        public BaseRepository(SubSystemDbContext context)
         {
-            
+            _context = context;
         }
         public Task<TEntity> CreateAsync(TEntity entity)
         {
