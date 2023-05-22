@@ -1,16 +1,17 @@
 ﻿using EntityFrameworkDemo.Business.Base;
 using EntityFrameworkDemo.Business.Context;
 using EntityFrameworkDemo.Entity.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace EntityFrameworkDemo.Business.Repository
 {
-    public class SubSystemRepository : BaseRepository<SubSystem>
+    public partial class SubSystemRepository : BaseRepository<SubSystem>
     {
-        private readonly SubSystemDbContext _context;
+        private readonly IDbContextFactory<SubSystemDbContext> _contextFactory;
 
-        public SubSystemRepository(SubSystemDbContext context) : base(context)
+        public SubSystemRepository(IDbContextFactory<SubSystemDbContext> contextFactory) : base(contextFactory)
         {
-            _context = context;
+            _contextFactory = contextFactory;
         }
     }
 }
