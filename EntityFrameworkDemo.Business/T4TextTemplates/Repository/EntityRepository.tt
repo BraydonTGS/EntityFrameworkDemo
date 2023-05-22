@@ -1,0 +1,62 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension="cs" #>
+<#
+	// Constants //
+string fileName = "EntityList.txt";
+string relativePath = @"EntityFrameworkDemo.Business\T4TextTemplates\FilesToRead";
+string currentDirectory = Directory.GetCurrentDirectory();
+string filePath = Path.Combine(currentDirectory, relativePath, fileName);
+
+string BaseRepository = "BaseRepository<TEntity>";
+string DbContext = "SubSystemDbContext";
+string IDbContextFactory = "IDbContextFactory<TContext>"; 
+string dbContextFactory = "contextFactory";
+string priDbContextFactory = "_contextFactory"; 
+
+	// Extract from File //
+var doesExist = File.Exists(filePath); 
+List<string> entityNames = new List<string>();
+
+	if(doesExist)
+	{
+		entityNames.AddRange(File.ReadAllLines(filePath));
+	}	
+#>
+using EntityFrameworkDemo.Business.Base;
+using EntityFrameworkDemo.Business.Context;
+using EntityFrameworkDemo.Entity.Entities;
+using Microsoft.EntityFrameworkCore;
+
+//------------------------------------------------------------
+//
+//
+// THIS CODE IS AUTO GENERATED. DO NOT MAKE MANUAL CHANGES!!!
+//
+//
+//------------------------------------------------------------
+namespace EntityFrameworkDemo.Business.T4TextTemplates.Generated
+{
+<#
+	foreach(string entity in entityNames)
+	{
+#>
+	#region <#=entity#>Repository
+	public partial class <#=entity#>Repository : <#=BaseRepository.Replace("TEntity", entity)#>
+	{
+		private readonly <#=IDbContextFactory.Replace("TContext", DbContext)#> <#=priDbContextFactory#>;
+
+		public <#=entity#>Repository(<#=IDbContextFactory.Replace("TContext", DbContext)#> <#=dbContextFactory#>) : base(<#=dbContextFactory#>)
+		{
+			<#=priDbContextFactory#> = <#=dbContextFactory#>;
+		}
+	}
+	#endregion
+
+<#	}
+#>
+}
