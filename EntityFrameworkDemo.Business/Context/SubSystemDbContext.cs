@@ -6,8 +6,8 @@ namespace EntityFrameworkDemo.Business.Context
 {
     public class SubSystemDbContext : DbContext
     {
-        DbSet<Device> Devices { get; set; }
-        DbSet<SubSystem> SubSystems { get; set; }
+        public DbSet<Device> Devices { get; set; }
+        public DbSet<SubSystem> SubSystems { get; set; }
 
         public SubSystemDbContext() { }
 
