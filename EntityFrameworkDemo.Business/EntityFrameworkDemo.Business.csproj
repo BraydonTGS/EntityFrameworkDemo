@@ -20,10 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="NewFolder\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="T4TextTemplates\Repository\EntityRepository.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

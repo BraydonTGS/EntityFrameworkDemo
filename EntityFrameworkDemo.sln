@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDemo.Entity", "EntityFrameworkDemo.Entity\EntityFrameworkDemo.Entity.csproj", "{98100E68-C65E-4B9C-8DD6-FF0F35646C7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkDemo.Entity", "EntityFrameworkDemo.Entity\EntityFrameworkDemo.Entity.csproj", "{98100E68-C65E-4B9C-8DD6-FF0F35646C7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDemo.Business", "EntityFrameworkDemo.Business\EntityFrameworkDemo.Business.csproj", "{9DCF7E2D-AC05-4EEB-99ED-F8AABAB72A4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkDemo.Business", "EntityFrameworkDemo.Business\EntityFrameworkDemo.Business.csproj", "{9DCF7E2D-AC05-4EEB-99ED-F8AABAB72A4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDemo.Console", "EntityFrameworkDemo.Console\EntityFrameworkDemo.Console.csproj", "{262A0C09-135B-4646-9DB8-6EA59F579081}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkDemo.Console", "EntityFrameworkDemo.Console\EntityFrameworkDemo.Console.csproj", "{262A0C09-135B-4646-9DB8-6EA59F579081}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{543445B3-2D3F-46A0-9934-2E71DAD9D309}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FFDC0338-6044-4F0E-B1A0-F3F4C03EF2BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDemo.Business.Tests", "EntityFrameworkDemo.Business.Tests\EntityFrameworkDemo.Business.Tests.csproj", "{AC045081-DA04-4EB4-A314-DCF6A35E7C6A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDemo.Business.Tests", "EntityFrameworkDemo.Business.Tests\EntityFrameworkDemo.Business.Tests.csproj", "{CAAD940D-A719-4DE4-A285-C52EADF31DDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +33,10 @@ Global
 		{262A0C09-135B-4646-9DB8-6EA59F579081}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{262A0C09-135B-4646-9DB8-6EA59F579081}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{262A0C09-135B-4646-9DB8-6EA59F579081}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AC045081-DA04-4EB4-A314-DCF6A35E7C6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AC045081-DA04-4EB4-A314-DCF6A35E7C6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AC045081-DA04-4EB4-A314-DCF6A35E7C6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AC045081-DA04-4EB4-A314-DCF6A35E7C6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAAD940D-A719-4DE4-A285-C52EADF31DDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAAD940D-A719-4DE4-A285-C52EADF31DDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAAD940D-A719-4DE4-A285-C52EADF31DDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAAD940D-A719-4DE4-A285-C52EADF31DDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,7 +45,7 @@ Global
 		{98100E68-C65E-4B9C-8DD6-FF0F35646C7E} = {543445B3-2D3F-46A0-9934-2E71DAD9D309}
 		{9DCF7E2D-AC05-4EEB-99ED-F8AABAB72A4E} = {543445B3-2D3F-46A0-9934-2E71DAD9D309}
 		{262A0C09-135B-4646-9DB8-6EA59F579081} = {543445B3-2D3F-46A0-9934-2E71DAD9D309}
-		{AC045081-DA04-4EB4-A314-DCF6A35E7C6A} = {FFDC0338-6044-4F0E-B1A0-F3F4C03EF2BB}
+		{CAAD940D-A719-4DE4-A285-C52EADF31DDC} = {FFDC0338-6044-4F0E-B1A0-F3F4C03EF2BB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3250C57B-61D7-44A8-BBB8-C658CAF149D7}
