@@ -12,7 +12,7 @@ namespace EntityFrameworkDemo.Business.Validations.Dto
         public DeviceDtoValidator(IDbContextValidationHelper<SubSystemDbContext> validationHelper)
         {
             _validationHelper = validationHelper;
-            RuleFor(x => x).MustAsync((x, cancellation) => _validationHelper.DoesEntityExistWithEntity<Device>(d => d.Id == x.Id && d.SubSystemId == x.SubSystemId)); 
+            RuleFor(x => x).MustAsync((x, cancellation) => _validationHelper.DoesEntityExistWithEntity<Device>(d => d.Id == x.Id && d.SubSystemId == x.SubSystemId)).WithMessage("{PropertyName}, {PropertyValue} already exists within the SubSystem."); 
         }
     }
 }
