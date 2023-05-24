@@ -26,7 +26,7 @@ namespace EntityFrameworkDemo.Business.Services
             var results = _validator.Validate(device);
             if (!results.IsValid)
             {
-
+                throw new InvalidOperationException($"{results.Errors}"); 
             }
             var entity = _mapper.Map<Device>(device);
             var result = await _repository.CreateAsync(entity);

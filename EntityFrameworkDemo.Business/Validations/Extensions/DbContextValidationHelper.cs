@@ -22,7 +22,7 @@ namespace EntityFrameworkDemo.Business.Validations.Extensions
         #endregion
 
         #region DoesEntityExistWithEntity
-        public async Task<bool> DoesEntityExistWithEntity<TEntity>(Expression<Func<TEntity, bool>> exp) where TEntity : class
+        public async Task<bool> IsUniqueWithinEntity<TEntity>(Expression<Func<TEntity, bool>> exp) where TEntity : class
         {
             var entity = _context.Set<TEntity>();
             var result = await entity.AnyAsync(exp);

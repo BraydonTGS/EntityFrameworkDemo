@@ -1,11 +1,11 @@
 ﻿using EntityFrameworkDemo.Business.Context;
+using EntityFrameworkDemo.Business.Dto;
 using EntityFrameworkDemo.Business.Validations.Extensions;
-using EntityFrameworkDemo.Entity.Entities;
 using FluentValidation;
 
 namespace EntityFrameworkDemo.Business.Validations.Dto
 {
-    public class SubSystemDtoValidator : AbstractValidator<SubSystem>
+    public class SubSystemDtoValidator : AbstractValidator<SubSystemDto>
     {
         private readonly IDbContextValidationHelper<SubSystemDbContext> _validationHelper;
 
