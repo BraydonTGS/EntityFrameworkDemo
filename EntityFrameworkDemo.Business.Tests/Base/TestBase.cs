@@ -27,7 +27,7 @@ namespace EntityFrameworkDemo.Business.Tests.Base
                 options.UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString());
                 options.UseLazyLoadingProxies();
             }, ServiceLifetime.Transient);
-
+            services.AddDbContextFactory<SubSystemDbContext>();  
             services.AddScoped<DeviceRepository>();
             services.AddScoped<SubSystemRepository>();
             services.AddScoped<IDeviceService, DeviceService>();

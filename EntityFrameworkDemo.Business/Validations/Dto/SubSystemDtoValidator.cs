@@ -7,9 +7,9 @@ namespace EntityFrameworkDemo.Business.Validations.Dto
 {
     public class SubSystemDtoValidator : AbstractValidator<SubSystemDto>
     {
-        private readonly IDbContextValidationHelper<SubSystemDbContext> _validationHelper;
+        private readonly IDbContextValidationHelper _validationHelper;
 
-        public SubSystemDtoValidator(IDbContextValidationHelper<SubSystemDbContext> validationHelper)
+        public SubSystemDtoValidator(IDbContextValidationHelper validationHelper)
         {
             _validationHelper = validationHelper;
         }

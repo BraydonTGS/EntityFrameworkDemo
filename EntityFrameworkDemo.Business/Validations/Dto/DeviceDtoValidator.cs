@@ -8,8 +8,8 @@ namespace EntityFrameworkDemo.Business.Validations.Dto
 {
     public class DeviceDtoValidator : AbstractValidator<DeviceDto>
     {
-        private readonly IDbContextValidationHelper<SubSystemDbContext> _validationHelper;
-        public DeviceDtoValidator(IDbContextValidationHelper<SubSystemDbContext> validationHelper)
+        private readonly IDbContextValidationHelper _validationHelper;
+        public DeviceDtoValidator(IDbContextValidationHelper validationHelper)
         {
             _validationHelper = validationHelper;
 
@@ -17,7 +17,7 @@ namespace EntityFrameworkDemo.Business.Validations.Dto
             RuleFor(x => x.Name).NotNull().NotEmpty();
             RuleFor(x => x.Description).NotNull().NotEmpty();
             RuleFor(x => x).MustAsync((x, cancellation) => _validationHelper.DoesExist<Device>(e => e.Id == x.Id)); 
-            RuleFor(x => x).MustAsync((x, cancellation) => _validationHelper.DoesEntityExistWithEntity<Device>(e => e.Id == x.Id && e.SubSystemId == x.SubSystemId)).WithMessage("{PropertyName}, {PropertyValue} already exists within the SubSystem."); 
+            RuleFor(x => x).MustAsync((x, cancellation) => _validationHelper.IsUniqueWithinEntity<Device>(e => e.Id == x.Id && e.SubSystemId == x.SubSystemId)).WithMessage("{PropertyName}, {PropertyValue} already exists within the SubSystem."); 
         }
     }
 }

@@ -14,7 +14,7 @@ namespace EntityFrameworkDemo.Business.Validations.Extensions
         }
 
         #region DoesExist
-        public async Task<bool> DoesExist<TEntity>(Expression<Func<object, bool>> id) where TEntity : class
+        public async Task<bool> DoesExist<TEntity>(Expression<Func<TEntity, bool>> id) where TEntity : class
         {
             var entity = _context.Set<TEntity>();
             var result = await entity.AnyAsync(id);
