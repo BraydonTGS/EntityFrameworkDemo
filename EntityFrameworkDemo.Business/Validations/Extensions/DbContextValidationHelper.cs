@@ -1,13 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EntityFrameworkDemo.Business.Context;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace EntityFrameworkDemo.Business.Validations.Extensions
 {
-    public class DbContextValidationHelper<TContext> where TContext : DbContext, IDbContextValidationHelper<TContext>
+    public class DbContextValidationHelper: IDbContextValidationHelper
     {
-        private readonly TContext _context;
+        private readonly SubSystemDbContext _context;
 
-        public DbContextValidationHelper(TContext context)
+        public DbContextValidationHelper(SubSystemDbContext context)
         {
             _context = context;
         }

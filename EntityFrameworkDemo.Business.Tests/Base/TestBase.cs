@@ -28,14 +28,13 @@ namespace EntityFrameworkDemo.Business.Tests.Base
                 options.UseLazyLoadingProxies();
             }, ServiceLifetime.Transient);
 
-            services.AddTransient<DeviceRepository>();
-            services.AddTransient<SubSystemRepository>();
-            services.AddTransient<IDeviceService, DeviceService>();
-            services.AddTransient<ISubSystemService, SubSystemService>();
-            services.AddTransient<SubSystemDtoValidator>(); 
-            services.AddTransient<DeviceDtoValidator>();
-
-
+            services.AddScoped<DeviceRepository>();
+            services.AddScoped<SubSystemRepository>();
+            services.AddScoped<IDeviceService, DeviceService>();
+            services.AddScoped<ISubSystemService, SubSystemService>();
+            services.AddScoped<IDbContextValidationHelper, DbContextValidationHelper>(); 
+            services.AddScoped<SubSystemDtoValidator>(); 
+            services.AddScoped<DeviceDtoValidator>();
         }
 
         protected TService GetService<TService>()
@@ -43,7 +42,7 @@ namespace EntityFrameworkDemo.Business.Tests.Base
             var service = serviceProvider.GetService<TService>();
             if (service == null)
             {
-                throw new Exception("Service Not Found");
+                throw new Exception("Service Was Not Found, Please Register");
             }
             return service;
         }
