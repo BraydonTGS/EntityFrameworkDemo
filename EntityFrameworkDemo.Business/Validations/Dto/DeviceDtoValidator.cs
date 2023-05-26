@@ -3,6 +3,7 @@ using EntityFrameworkDemo.Business.Dto;
 using EntityFrameworkDemo.Business.Validations.Extensions;
 using EntityFrameworkDemo.Entity.Entities;
 using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace EntityFrameworkDemo.Business.Validations.Dto
 {
@@ -16,7 +17,7 @@ namespace EntityFrameworkDemo.Business.Validations.Dto
             RuleFor(x => x.Id).NotNull().NotEmpty(); 
             RuleFor(x => x.Name).NotNull().NotEmpty();
             RuleFor(x => x.Description).NotNull().NotEmpty();
-            RuleFor(x => x).MustAsync((x, cancellation) => _validationHelper.DoesExist<Device>(e => e.Id == x.Id)); 
+            RuleFor(x => x).MustAsync((x, cancellation) => _validationHelper.DoesExist<Device>(e => e.Id == x.Id)).WithMessage("Device Does not Exist"); 
             RuleFor(x => x).MustAsync((x, cancellation) => _validationHelper.IsUniqueWithinEntity<Device>(e => e.Id == x.Id && e.SubSystemId == x.SubSystemId)).WithMessage("{PropertyName}, {PropertyValue} already exists within the SubSystem."); 
         }
     }

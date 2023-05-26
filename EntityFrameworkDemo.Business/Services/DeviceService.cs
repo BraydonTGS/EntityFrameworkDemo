@@ -20,20 +20,40 @@ namespace EntityFrameworkDemo.Business.Services
             _mapper = mapper;
         }
 
-        #region MapDtoToEntityAndAdd
-        public async Task<DeviceDto?> MapDtoToEntity(DeviceDto device)
+        #region GetAllDevices
+        public async Task<IEnumerable<DeviceDto>> GetDevicesAsync()
         {
-            var results = _validator.Validate(device);
-            if (!results.IsValid)
+            try
             {
-                throw new InvalidOperationException($"{results.Errors}"); 
+                var results = await _repository.GetAllAsync();
+
+                if (results == null)
+                    throw new ArgumentNullException(nameof(results));
+
+                var dtos = _mapper.Map<IEnumerable<DeviceDto>>(results);
+
+                return dtos;
             }
+            catch (Exception)
+            {
+                throw new AutoMapperMappingException("Error Mapping to DeviceDto");
+            }
+
+        }
+        #endregion
+        #region AddNewDevice
+        public async Task<DeviceDto?> AddNewDevice(DeviceDto device)
+        {
+            var results = _validator.ValidateAsync(device);
+
+            if (!results.Result.IsValid)
+                throw new InvalidOperationException($"{results.Result.Errors}");
+
             var entity = _mapper.Map<Device>(device);
             var result = await _repository.CreateAsync(entity);
-            if(result != null)
-            {
-                return device; 
-            }
+            if (result != null)
+                return device;
+
             return null;
         }
         #endregion

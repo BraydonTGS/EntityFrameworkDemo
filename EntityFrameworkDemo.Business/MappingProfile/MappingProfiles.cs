@@ -4,9 +4,9 @@ using EntityFrameworkDemo.Entity.Entities;
 
 namespace EntityFrameworkDemo.Business.MappingProfile
 {
-    public class MappingProfile : Profile
+    public class MappingProfiles : Profile
     {
-        public MappingProfile()
+        public MappingProfiles()
         {
             CreateMap<Device, DeviceDto>().ReverseMap();
             CreateMap<SubSystem, SubSystemDto>().ReverseMap();
