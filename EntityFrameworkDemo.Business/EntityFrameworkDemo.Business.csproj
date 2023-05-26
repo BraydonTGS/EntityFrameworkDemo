@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EntityFrameworkDemo.Entity\EntityFrameworkDemo.Entity.csproj" />
+    <ProjectReference Include="..\EntityFrameworkDemo.Global\EntityFrameworkDemo.Global.csproj" />
   </ItemGroup>
 
   <ItemGroup>

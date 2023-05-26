@@ -12,6 +12,7 @@ namespace EntityFrameworkDemo.Business.Tests.Base
             _dbContext = dbContext;
         }
 
+        #region SeedDatabase
         public async void Seed()
         {
             var system = new SubSystem()
@@ -19,12 +20,11 @@ namespace EntityFrameworkDemo.Business.Tests.Base
                 Name = "SubSystem1",
                 Description = "SubSystem1",
                 Devices = new List<Device>()
-
             };
 
-            var device1 = new Device { Name = "Device1", Description = "Device1" };
-            var device2 = new Device { Name = "Device2", Description = "Device2" };
-            var device3 = new Device { Name = "Device3", Description = "Device3" };
+            var device1 = new Device { Name = "Device1", Description = "This is Device1" };
+            var device2 = new Device { Name = "Device2", Description = "This is Device2" };
+            var device3 = new Device { Name = "Device3", Description = "This is Device3" };
 
             system.Devices.Add(device1);
             system.Devices.Add(device2);
@@ -37,12 +37,15 @@ namespace EntityFrameworkDemo.Business.Tests.Base
 
             await _dbContext.SaveChangesAsync();
         }
+        #endregion
 
+        #region ClearDatabase
         public async void Clear()
         {
             _dbContext.Devices.RemoveRange(_dbContext.Devices);
             _dbContext.SubSystems.RemoveRange(_dbContext.SubSystems);
             await _dbContext.SaveChangesAsync();
         }
+        #endregion
     }
 }

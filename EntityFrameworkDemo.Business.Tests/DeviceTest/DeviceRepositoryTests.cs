@@ -31,5 +31,14 @@ namespace EntityFrameworkDemo.Business.Tests.DeviceTest
             Assert.AreEqual(3, result.Count());
             _databaseSeeder.Clear();
         }
+
+        [TestMethod]
+        public async Task GetById_Success()
+        {
+            _databaseSeeder.Seed();
+            var result = await _service.GetDeviceById(1); 
+            Assert.IsNotNull(result);
+            _databaseSeeder.Clear(); 
+        }
     }
 }

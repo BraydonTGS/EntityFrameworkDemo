@@ -14,7 +14,7 @@ namespace EntityFrameworkDemo.Business.Base
         }
 
         #region CreateAsync
-        public async Task<TEntity> CreateAsync(TEntity entity)
+        public async Task<TEntity?> CreateAsync(TEntity entity)
         {
             try
             {
@@ -44,15 +44,19 @@ namespace EntityFrameworkDemo.Business.Base
                     return false;
                 }
                 context.Set<TEntity>().Remove(entity);
-                await context.SaveChangesAsync();
-                return true;
+                var rowsAffected = await context.SaveChangesAsync();
+                if (rowsAffected > 0)
+                {
+                    return true;
+                }
+                return false;
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
         }
         #endregion
 
         #region GetAllAsync
-        public async Task<IEnumerable<TEntity>> GetAllAsync()
+        public async Task<IEnumerable<TEntity>?> GetAllAsync()
         {
             try
             {
@@ -69,7 +73,7 @@ namespace EntityFrameworkDemo.Business.Base
         #endregion
 
         #region GetByIdAsync
-        public async Task<TEntity> GetByIdAsync(object id)
+        public async Task<TEntity?> GetByIdAsync(object id)
         {
             try
             {
@@ -87,7 +91,7 @@ namespace EntityFrameworkDemo.Business.Base
         #endregion
 
         #region UpdateAsync
-        public async Task<TEntity> UpdateAsync(TEntity entityUpdate)
+        public async Task<TEntity?> UpdateAsync(TEntity entityUpdate)
         {
             try
             {
@@ -99,7 +103,7 @@ namespace EntityFrameworkDemo.Business.Base
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
 
-        } 
+        }
         #endregion
     }
 }

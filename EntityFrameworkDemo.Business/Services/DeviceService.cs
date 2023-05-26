@@ -4,6 +4,7 @@ using EntityFrameworkDemo.Business.Interfaces;
 using EntityFrameworkDemo.Business.Repository;
 using EntityFrameworkDemo.Business.Validations.Dto;
 using EntityFrameworkDemo.Entity.Entities;
+using EntityFrameworkDemo.Global;
 
 namespace EntityFrameworkDemo.Business.Services
 {
@@ -21,22 +22,21 @@ namespace EntityFrameworkDemo.Business.Services
         }
 
         #region GetAllDevices
-        public async Task<IEnumerable<DeviceDto>> GetDevicesAsync()
+        public async Task<IEnumerable<DeviceDto>?> GetDevicesAsync()
         {
             try
             {
                 var results = await _repository.GetAllAsync();
-
                 if (results == null)
-                    throw new ArgumentNullException(nameof(results));
+                    return null;
 
-                var dtos = _mapper.Map<IEnumerable<DeviceDto>>(results);
+                var dtos = _mapper.Map<IEnumerable<DeviceDto>?>(results);
 
                 return dtos;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new AutoMapperMappingException("Error Mapping to DeviceDto");
+                throw new AutoMapperMappingException(Constants.ErrorMappingToDevice, ex);
             }
 
         }
@@ -44,17 +44,32 @@ namespace EntityFrameworkDemo.Business.Services
         #region AddNewDevice
         public async Task<DeviceDto?> AddNewDevice(DeviceDto device)
         {
-            var results = _validator.ValidateAsync(device);
+            try
+            {
+                var results = _validator.ValidateAsync(device);
+                if (!results.Result.IsValid)
+                    throw new InvalidOperationException($"{results.Result.Errors.FirstOrDefault()}");
 
-            if (!results.Result.IsValid)
-                throw new InvalidOperationException($"{results.Result.Errors}");
+                var entity = _mapper.Map<Device>(device);
 
-            var entity = _mapper.Map<Device>(device);
-            var result = await _repository.CreateAsync(entity);
-            if (result != null)
-                return device;
+                var result = await _repository.CreateAsync(entity);
 
-            return null;
+                if (result != null)
+                    return device;
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+
+                throw new AutoMapperMappingException(Constants.ErrorMappingToDevice, ex);
+            }
+
+        }
+
+        public async Task<DeviceDto?> GetDeviceById(int id)
+        {
+            return _mapper.Map<DeviceDto>(await _repository.GetByIdAsync(id));
         }
         #endregion
     }

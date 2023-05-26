@@ -5,6 +5,7 @@ namespace EntityFrameworkDemo.Business.Interfaces
     public interface IDeviceService
     {
         Task<DeviceDto?> AddNewDevice(DeviceDto device);
-        Task<IEnumerable<DeviceDto>> GetDevicesAsync();
+        Task <DeviceDto?> GetDeviceById(int id);
+        Task<IEnumerable<DeviceDto>?> GetDevicesAsync();
     }
 }
