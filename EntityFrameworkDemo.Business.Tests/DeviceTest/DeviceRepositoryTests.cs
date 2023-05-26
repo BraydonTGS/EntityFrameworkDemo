@@ -38,6 +38,19 @@ namespace EntityFrameworkDemo.Business.Tests.DeviceTest
             _databaseSeeder.Seed();
             var result = await _service.GetDeviceById(1); 
             Assert.IsNotNull(result);
+            Assert.AreEqual(1, result.Id); 
+            Assert.AreEqual("Device1", result.Name);
+            Assert.AreEqual(1, result.SubSystemId); 
+            _databaseSeeder.Clear(); 
+        }
+
+        [TestMethod]
+        public async Task CreateNewDevice_Success()
+        {
+            _databaseSeeder.Seed();
+            var dto = DeviceRepositoryTestHelper.GenerateDto(); 
+            var result = await _service.AddNewDevice(dto);
+            Assert.IsNotNull(result);
             _databaseSeeder.Clear(); 
         }
     }

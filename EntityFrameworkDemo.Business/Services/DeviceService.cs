@@ -31,7 +31,6 @@ namespace EntityFrameworkDemo.Business.Services
                     return null;
 
                 var dtos = _mapper.Map<IEnumerable<DeviceDto>?>(results);
-
                 return dtos;
             }
             catch (Exception ex)
@@ -53,15 +52,14 @@ namespace EntityFrameworkDemo.Business.Services
                 var entity = _mapper.Map<Device>(device);
 
                 var result = await _repository.CreateAsync(entity);
+                if (result == null)
+                    return null;
 
-                if (result != null)
-                    return device;
-
-                return null;
+                var dto = _mapper.Map<DeviceDto>(result);
+                return dto; 
             }
             catch (Exception ex)
             {
-
                 throw new AutoMapperMappingException(Constants.ErrorMappingToDevice, ex);
             }
 
@@ -69,7 +67,19 @@ namespace EntityFrameworkDemo.Business.Services
 
         public async Task<DeviceDto?> GetDeviceById(int id)
         {
-            return _mapper.Map<DeviceDto>(await _repository.GetByIdAsync(id));
+            try
+            {
+                var entity = await _repository.GetByIdAsync(id);
+                if (entity == null)
+                    return null;
+
+                var dto = _mapper.Map<DeviceDto>(entity);
+                return dto;
+            }
+            catch (Exception ex)
+            {
+                throw new AutoMapperMappingException(Constants.ErrorMappingToDevice, ex);
+            }
         }
         #endregion
     }

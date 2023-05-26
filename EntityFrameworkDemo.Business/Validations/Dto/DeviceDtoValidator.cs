@@ -14,11 +14,9 @@ namespace EntityFrameworkDemo.Business.Validations.Dto
         {
             _validationHelper = validationHelper;
 
-            RuleFor(x => x.Id).NotNull().NotEmpty(); 
             RuleFor(x => x.Name).NotNull().NotEmpty();
             RuleFor(x => x.Description).NotNull().NotEmpty();
-            RuleFor(x => x).MustAsync((x, cancellation) => _validationHelper.DoesExist<Device>(e => e.Id == x.Id)).WithMessage("Device Does not Exist"); 
-            RuleFor(x => x).MustAsync((x, cancellation) => _validationHelper.IsUniqueWithinEntity<Device>(e => e.Id == x.Id && e.SubSystemId == x.SubSystemId)).WithMessage("{PropertyName}, {PropertyValue} already exists within the SubSystem."); 
+            RuleFor(x => x).MustAsync((x, cancellation) => _validationHelper.IsUniqueWithinEntity<Device>(e => e.SubSystemId == x.SubSystemId && e.Name == x.Name)).WithMessage("{PropertyName}, {PropertyValue} already exists within the SubSystem."); 
         }
     }
 }

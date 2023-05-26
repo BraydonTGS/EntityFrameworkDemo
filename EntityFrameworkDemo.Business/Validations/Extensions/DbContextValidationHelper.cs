@@ -18,7 +18,7 @@ namespace EntityFrameworkDemo.Business.Validations.Extensions
         {
             var entity = _context.Set<TEntity>();
             var result = await entity.AnyAsync(id);
-            return !result;
+            return result;
         }
         #endregion
 
