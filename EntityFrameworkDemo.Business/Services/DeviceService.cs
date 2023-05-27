@@ -48,7 +48,7 @@ namespace EntityFrameworkDemo.Business.Services
                 var results = _validator.ValidateAsync(device);
                 if (!results.Result.IsValid)
                     throw new InvalidOperationException($"{results.Result.Errors.FirstOrDefault()}");
-
+                
                 var entity = _mapper.Map<Device>(device);
 
                 var result = await _repository.CreateAsync(entity);
@@ -60,7 +60,8 @@ namespace EntityFrameworkDemo.Business.Services
             }
             catch (Exception ex)
             {
-                throw new AutoMapperMappingException(Constants.ErrorMappingToDevice, ex);
+                throw new InvalidOperationException(Constants.ErrorMappingToDevice, ex);
+
             }
 
         }

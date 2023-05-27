@@ -36,22 +36,31 @@ namespace EntityFrameworkDemo.Business.Tests.DeviceTest
         public async Task GetById_Success()
         {
             _databaseSeeder.Seed();
-            var result = await _service.GetDeviceById(1); 
+            var result = await _service.GetDeviceById(1);
             Assert.IsNotNull(result);
-            Assert.AreEqual(1, result.Id); 
+            Assert.AreEqual(1, result.Id);
             Assert.AreEqual("Device1", result.Name);
-            Assert.AreEqual(1, result.SubSystemId); 
-            _databaseSeeder.Clear(); 
+            Assert.AreEqual(1, result.SubSystemId);
+            _databaseSeeder.Clear();
         }
 
         [TestMethod]
         public async Task CreateNewDevice_Success()
         {
             _databaseSeeder.Seed();
-            var dto = DeviceRepositoryTestHelper.GenerateDto(); 
+            var dto = DeviceRepositoryTestHelper.GenerateDto();
             var result = await _service.AddNewDevice(dto);
             Assert.IsNotNull(result);
-            _databaseSeeder.Clear(); 
+            _databaseSeeder.Clear();
+        }
+
+        [TestMethod]
+        public async Task CreateNewDevice_Failure_DeviceAlreadyExistsWithinSubSystem()
+        {
+            _databaseSeeder.Seed();
+            var dto = DeviceRepositoryTestHelper.GenerateDuplicateDevice();
+            await Assert.ThrowsExceptionAsync<InvalidOperationException>(async () => await _service.AddNewDevice(dto));
+            _databaseSeeder.Clear();
         }
     }
 }

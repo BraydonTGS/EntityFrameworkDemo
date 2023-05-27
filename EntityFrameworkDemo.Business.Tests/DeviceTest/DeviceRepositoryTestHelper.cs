@@ -15,5 +15,16 @@ namespace EntityFrameworkDemo.Business.Tests.DeviceTest
             }; 
             return dto;
         }
+
+        public static DeviceDto GenerateDuplicateDevice()
+        {
+            var dto = new DeviceDto()
+            {
+                Name = "Device1",
+                Description = "This is Device1",
+                SubSystemId = 1
+            };
+            return dto;
+        }
     }
 }
