@@ -40,32 +40,8 @@ namespace EntityFrameworkDemo.Business.Services
 
         }
         #endregion
-        #region AddNewDevice
-        public async Task<DeviceDto?> AddNewDevice(DeviceDto device)
-        {
-            try
-            {
-                var results = _validator.ValidateAsync(device);
-                if (!results.Result.IsValid)
-                    throw new InvalidOperationException($"{results.Result.Errors.FirstOrDefault()}");
-                
-                var entity = _mapper.Map<Device>(device);
 
-                var result = await _repository.CreateAsync(entity);
-                if (result == null)
-                    return null;
-
-                var dto = _mapper.Map<DeviceDto>(result);
-                return dto; 
-            }
-            catch (Exception ex)
-            {
-                throw new InvalidOperationException(Constants.ErrorMappingToDevice, ex);
-
-            }
-
-        }
-
+        #region GetDeviceById
         public async Task<DeviceDto?> GetDeviceById(int id)
         {
             try
@@ -83,5 +59,49 @@ namespace EntityFrameworkDemo.Business.Services
             }
         }
         #endregion
+
+        #region AddNewDevice
+        public async Task<DeviceDto?> AddNewDevice(DeviceDto device)
+        {
+            try
+            {
+                var results = _validator.ValidateAsync(device);
+                if (!results.Result.IsValid)
+                    throw new InvalidOperationException($"{results.Result.Errors.FirstOrDefault()}");
+
+                var entity = _mapper.Map<Device>(device);
+
+                var result = await _repository.CreateAsync(entity);
+                if (result == null)
+                    return null;
+
+                var dto = _mapper.Map<DeviceDto>(result);
+                return dto;
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException(Constants.ErrorMappingToDevice, ex);
+
+            }
+
+        }
+        #endregion
+
+        #region DeleteDevice
+        public async Task<bool> DeleteDevice(int id)
+        {
+            try
+            {
+                return await _repository.DeleteAsync(id); 
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException(ex.Message); 
+            }
+        }
+        #endregion
+
+
     }
+
 }

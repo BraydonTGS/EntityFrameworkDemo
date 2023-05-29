@@ -62,5 +62,26 @@ namespace EntityFrameworkDemo.Business.Tests.DeviceTest
             await Assert.ThrowsExceptionAsync<InvalidOperationException>(async () => await _service.AddNewDevice(dto));
             _databaseSeeder.Clear();
         }
+
+        [TestMethod]
+        public async Task DeleteDeviceById_Success()
+        {
+            _databaseSeeder.Seed();
+            var result = await _service.DeleteDevice(1); 
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result); 
+            _databaseSeeder.Clear();
+        }
+
+        [TestMethod]
+        public async Task DeleteDeviceById_Failure()
+        {
+            _databaseSeeder.Seed();
+            var result = await _service.DeleteDevice(5);
+            Assert.IsNotNull(result);
+            Assert.IsFalse(result);
+            _databaseSeeder.Clear();
+        }
+
     }
 }
