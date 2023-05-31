@@ -8,6 +8,8 @@ using EntityFrameworkDemo.Business.Validations.Dto;
 using EntityFrameworkDemo.Business.Validations.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace EntityFrameworkDemo.Business.Tests.Base
 {
@@ -30,7 +32,10 @@ namespace EntityFrameworkDemo.Business.Tests.Base
             {
                 map.AddProfile<MappingProfiles>();
             });
-
+            services.AddLogging(builder =>
+            {
+                builder.ClearProviders().AddSerilog();
+            });
             services.AddSingleton(mapperConfig.CreateMapper());
             services.AddScoped<DeviceRepository>();
             services.AddScoped<SubSystemRepository>();
