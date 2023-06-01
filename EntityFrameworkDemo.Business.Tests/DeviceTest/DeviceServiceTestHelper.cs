@@ -3,7 +3,7 @@ using EntityFrameworkDemo.Entity.Entities;
 
 namespace EntityFrameworkDemo.Business.Tests.DeviceTest
 {
-    public static class DeviceRepositoryTestHelper
+    public static class DeviceServiceTestHelper
     {
         public static DeviceDto GenerateDto()
         {

@@ -6,13 +6,13 @@ using Microsoft.Extensions.DependencyInjection;
 namespace EntityFrameworkDemo.Business.Tests.DeviceTest
 {
     [TestClass]
-    public class DeviceRepositoryTests : TestBase
+    public class DeviceServiceTests : TestBase
     {
         private readonly IServiceCollection _services;
         private readonly IServiceProvider _serviceProvider;
         private readonly IDeviceService _service;
         private readonly DatabaseSeeder _databaseSeeder;
-        public DeviceRepositoryTests()
+        public DeviceServiceTests()
         {
             _services = ConfigureServices(seedDatabase: true);
             _serviceProvider = _services.BuildServiceProvider();
@@ -46,7 +46,7 @@ namespace EntityFrameworkDemo.Business.Tests.DeviceTest
         public async Task CreateNewDevice_Success()
         {
             _databaseSeeder.Seed();
-            var dto = DeviceRepositoryTestHelper.GenerateDto();
+            var dto = DeviceServiceTestHelper.GenerateDto();
             var result = await _service.AddNewDevice(dto);
             Assert.IsNotNull(result);
             _databaseSeeder.Clear();
@@ -56,7 +56,7 @@ namespace EntityFrameworkDemo.Business.Tests.DeviceTest
         public async Task CreateNewDevice_Failure_DeviceAlreadyExistsWithinSubSystem()
         {
             _databaseSeeder.Seed();
-            var dto = DeviceRepositoryTestHelper.GenerateDuplicateDevice();
+            var dto = DeviceServiceTestHelper.GenerateDuplicateDevice();
             await Assert.ThrowsExceptionAsync<InvalidOperationException>(async () => await _service.AddNewDevice(dto));
             _databaseSeeder.Clear();
         }

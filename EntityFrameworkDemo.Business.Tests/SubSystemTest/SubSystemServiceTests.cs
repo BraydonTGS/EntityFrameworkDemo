@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EntityFrameworkDemo.Business.Tests.Base;
 
 namespace EntityFrameworkDemo.Business.Tests.SubSystemTest
 {
-    internal class SubSystemServiceTests
+    public class SubSystemServiceTests : TestBase
     {
     }
 }
