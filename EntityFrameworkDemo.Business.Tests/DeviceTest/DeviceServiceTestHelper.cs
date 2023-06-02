@@ -1,5 +1,4 @@
 ﻿using EntityFrameworkDemo.Business.Dto;
-using EntityFrameworkDemo.Entity.Entities;
 
 namespace EntityFrameworkDemo.Business.Tests.DeviceTest
 {
@@ -10,9 +9,9 @@ namespace EntityFrameworkDemo.Business.Tests.DeviceTest
             var dto = new DeviceDto()
             {
                 Name = "Devic4",
-                Description = "This is Device4", 
+                Description = "This is Device4",
                 SubSystemId = 1
-            }; 
+            };
             return dto;
         }
 
