@@ -1,24 +1,30 @@
 ﻿using AutoMapper;
+using EntityFrameworkDemo.Business.Connection;
 using EntityFrameworkDemo.Business.Context;
 using EntityFrameworkDemo.Business.Interfaces;
+using EntityFrameworkDemo.Business.MappingProfile;
+using EntityFrameworkDemo.Business.Repository;
 using EntityFrameworkDemo.Business.Services;
 using EntityFrameworkDemo.Business.Validations.Dto;
 using EntityFrameworkDemo.Business.Validations.Extensions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Serilog;
+
 
 namespace EntityFrameworkDemo.Business.Config
 {
     public class RegisterServices
     {
         // Register Services Required for the Application //
-        public virtual IServiceCollection ConfigureServices(bool seedDatabase = false)
+        public virtual IServiceCollection ConfigureServices()
         {
             var services = new ServiceCollection();
 
             services.AddDbContext<SubSystemDbContext>(options =>
             {
-                options.UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString());
-                options.UseLazyLoadingProxies();
+                options.UseSqlServer(Hidden.GetConnectionString());
             }, ServiceLifetime.Transient);
 
             services.AddDbContextFactory<SubSystemDbContext>();
@@ -40,9 +46,7 @@ namespace EntityFrameworkDemo.Business.Config
             services.AddScoped<SubSystemDtoValidator>();
             services.AddScoped<DeviceDtoValidator>();
 
-            if (seedDatabase)
-                services.AddScoped<DatabaseSeeder>();
-
             return services;
         }
+    }
 }
