@@ -16,12 +16,12 @@ namespace EntityFrameworkDemo.Business.Services
         private readonly IMapper _mapper;
         private readonly ILogger _logger;
 
-        public DeviceService(DeviceRepository repository, DeviceDtoValidator validator, IMapper mapper, ILogger<DeviceService> logger)
+        public DeviceService(DeviceRepository repository, DeviceDtoValidator validator, IMapper mapper, ILoggerFactory loggerFactory)
         {
             _repository = repository;
             _validator = validator;
             _mapper = mapper;
-            _logger = logger;
+            _logger = loggerFactory.CreateLogger<DeviceService>();
         }
 
         #region GetAllDevices

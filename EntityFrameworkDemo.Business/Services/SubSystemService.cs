@@ -18,12 +18,12 @@ namespace EntityFrameworkDemo.Business.Services
         private readonly IMapper _mapper;
         private readonly ILogger<SubSystemService> _logger;
 
-        public SubSystemService(SubSystemRepository repository, SubSystemDtoValidator validator, IMapper mapper, ILogger<SubSystemService> logger)
+        public SubSystemService(SubSystemRepository repository, SubSystemDtoValidator validator, IMapper mapper, ILoggerFactory loggerFactory)
         {
             _repository = repository;
             _validator = validator;
             _mapper = mapper;
-            _logger = logger;
+            _logger = loggerFactory.CreateLogger<SubSystemService>();
         }
 
         #region GetSubSystemsAsync

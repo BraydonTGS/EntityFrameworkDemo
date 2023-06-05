@@ -5,19 +5,11 @@ using Serilog.Events;
 
 namespace EntityFrameworkDemo.Business.Logging
 {
-    public class LoggingConfig
+    public static class LoggingConfig
     {
-        #region Configure
-        public static void Configure()
+        #region ConfigureLogging
+        public static ILoggerFactory ConfigureLogging(IServiceCollection services)
         {
-            var serviceProvider = new ServiceCollection()
-           .AddLogging(loggingBuilder =>
-           {
-               loggingBuilder.ClearProviders();
-               loggingBuilder.AddSerilog(dispose: true);
-           })
-           .BuildServiceProvider();
-
             var loggerConfiguration = new LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
@@ -27,8 +19,16 @@ namespace EntityFrameworkDemo.Business.Logging
                 .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
 
+            services.AddLogging(loggingBuilder =>
+            {
+                loggingBuilder.ClearProviders();
+                loggingBuilder.AddSerilog(loggerConfiguration, dispose: true);
+            });
+
+            var serviceProvider = services.BuildServiceProvider();
             var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
-            loggerFactory.AddSerilog(loggerConfiguration);
+
+            return loggerFactory;
         }
         #endregion
     }

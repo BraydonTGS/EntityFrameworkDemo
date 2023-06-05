@@ -2,6 +2,7 @@
 using EntityFrameworkDemo.Business.Interfaces;
 using EntityFrameworkDemo.Business.Tests.Base;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace EntityFrameworkDemo.Business.Tests.DeviceTest
 {
@@ -25,6 +26,8 @@ namespace EntityFrameworkDemo.Business.Tests.DeviceTest
         {
             _databaseSeeder.Seed();
             var result = await _service.GetDevicesAsync();
+            var testing = _serviceProvider.GetRequiredService<ILoggerFactory>(); 
+
             Assert.IsNotNull(result);
             Assert.AreEqual(3, result.Count());
             _databaseSeeder.Clear();

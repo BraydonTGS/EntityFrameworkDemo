@@ -2,6 +2,7 @@
 using EntityFrameworkDemo.Business.Connection;
 using EntityFrameworkDemo.Business.Context;
 using EntityFrameworkDemo.Business.Interfaces;
+using EntityFrameworkDemo.Business.Logging;
 using EntityFrameworkDemo.Business.MappingProfile;
 using EntityFrameworkDemo.Business.Repository;
 using EntityFrameworkDemo.Business.Services;
@@ -33,10 +34,7 @@ namespace EntityFrameworkDemo.Business.Config
             {
                 map.AddProfile<MappingProfiles>();
             });
-            services.AddLogging(builder =>
-            {
-                builder.ClearProviders().AddSerilog();
-            });
+
             services.AddSingleton(mapperConfig.CreateMapper());
             services.AddScoped<DeviceRepository>();
             services.AddScoped<SubSystemRepository>();
@@ -45,6 +43,10 @@ namespace EntityFrameworkDemo.Business.Config
             services.AddScoped<IDbContextValidationHelper, DbContextValidationHelper>();
             services.AddScoped<SubSystemDtoValidator>();
             services.AddScoped<DeviceDtoValidator>();
+
+            // Configure Logging //
+            var loggerFactory = LoggingConfig.ConfigureLogging(services);
+            services.AddSingleton(loggerFactory);
 
             return services;
         }
