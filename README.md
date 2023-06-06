@@ -38,10 +38,14 @@ The `Tests` project contains unit tests for the services in the application. The
 
 - **Database Seeder:** Additionally, there is a Database Seeder class that is responsible for seeding and clearing the in-memory database before and after each test is run. This ensures a consistent and isolated testing environment for each test execution.
 
+- **DeviceServiceTests** The DeviceServiceTests class is a set of unit tests for the DeviceService class in the EntityFrameworkDemo.Business namespace. It includes tests for methods such as GetAll, GetById, CreateNewDevice, DeleteDeviceById, etc. These tests verify the expected behavior of the DeviceService class under different scenarios.
+
+- **SubSystemServiceTests** The SubSystemServiceTests class is a collection of unit tests for the SubSystemService class in the EntityFrameworkDemo.Business namespace. It contains tests for methods like GetAll, GetById, CreateNewSubsystem, DeleteSubsystemById, etc. These tests validate the functionality of the SubSystemService class in various situations.
+
 ### Global Project
 The `Global` project serves as a central place for common files used across the application. It includes the following components:
 
-- **Constants Class:** A Constants class that contains strings used across the application. This allows for centralized management and easy access to shared string values.
+- **Constants Class:** A Constants class that contains strings used across the application. This allows for centralized management and easy access to shared values.
 
 ### WPF Project
 - **Coming Soon.** 
@@ -54,3 +58,4 @@ The `Global` project serves as a central place for common files used across the 
 - **Fluent Validations:** Fluent Validations library is used for validating input data and enforcing business rules in a fluent and customizable way.
 - **AutoMapper:** AutoMapper is employed for mapping between different object types, such as mapping entity objects to DTOs and vice versa. It simplifies the mapping process and reduces boilerplate code.
 - **T4 Text Templates:** T4 (Text Template Transformation Toolkit) templates are used
+- **Serilog** an open-source logging library for .NET applications. It provides a flexible and efficient logging framework with a focus on structured logging.
