@@ -6,10 +6,10 @@ using Microsoft.Extensions.Logging;
 
 namespace EntityFrameworkDemo.Business.Services
 {
+    //Todo: Add User Validation and Implement Methods
     public class UserService : IUserService
     {
         private readonly UserRepository _repository;
-        // Todo: Add Validation
         private readonly IMapper _mapper;
         private readonly ILogger<UserService> _logger;
         public UserService(UserRepository repository, IMapper mapper, ILoggerFactory loggerFactory)
