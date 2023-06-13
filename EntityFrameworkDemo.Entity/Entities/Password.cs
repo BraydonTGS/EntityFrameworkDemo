@@ -20,6 +20,8 @@ namespace EntityFrameworkDemo.Entity.Entities
         [Column("Salt")]
         public byte[] Salt { get; set; } = new byte[0];
 
+        [ForeignKey("UserId")]
+        [Column("UserId")]
         public int UserId { get; set; }
 
         public virtual User? User { get; set; } 
