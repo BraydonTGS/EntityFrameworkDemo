@@ -10,6 +10,7 @@ namespace EntityFrameworkDemo.Business.MappingProfile
         {
             CreateMap<Device, DeviceDto>().ReverseMap();
             CreateMap<SubSystem, SubSystemDto>().ReverseMap();
+            CreateMap<User, UserDto>().ReverseMap();
         }
     }
 }
