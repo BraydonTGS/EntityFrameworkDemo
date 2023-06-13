@@ -48,7 +48,7 @@ The `Global` project serves as a central place for common files used across the 
 - **Constants Class:** A Constants class that contains strings used across the application. This allows for centralized management and easy access to shared values.
 
 ### WPF Project
-- **Coming Soon.** 
+- **Services are Registered**: User Interface is in Progress. 
 
 ## Technologies Used
 
