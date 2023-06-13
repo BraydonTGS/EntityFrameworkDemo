@@ -8,6 +8,8 @@ namespace EntityFrameworkDemo.Business.Context
     {
         public DbSet<Device> Devices { get; set; }
         public DbSet<SubSystem> SubSystems { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Password> Password { get; set; }   
 
         public SubSystemDbContext() { }
 
@@ -19,6 +21,11 @@ namespace EntityFrameworkDemo.Business.Context
             {
                 optionsBuilder.UseSqlServer(Hidden.GetConnectionString());
             }
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().HasIndex(u => new {u.UserName, u.Email}).IsUnique();
         }
     }
 }
