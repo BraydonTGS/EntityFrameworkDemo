@@ -1,4 +1,5 @@
 ﻿using EntityFrameworkDemo.Business.Interfaces;
+using EntityFrameworkDemo.Entity.Entities;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -10,6 +11,18 @@ namespace EntityFrameworkDemo.Business.Services
         {
 
         }
+
+        #region EncryptPassword
+        public Password EncryptPassword(string password)
+        {
+            Password passwordDto = new Password();
+            passwordDto.Salt = GenerateSalt();
+            passwordDto.Hash = HashPassword(password, passwordDto.Salt);
+            return passwordDto;
+        }
+        #endregion
+
+        #region GenerateSalt
         public byte[] GenerateSalt()
         {
             byte[] salt = new byte[16];
@@ -19,7 +32,10 @@ namespace EntityFrameworkDemo.Business.Services
             }
             return salt;
         }
+        #endregion
 
+
+        #region HashPassword
         public byte[] HashPassword(string password, byte[] salt)
         {
             using (var hmac = new HMACSHA512(salt))
@@ -27,5 +43,7 @@ namespace EntityFrameworkDemo.Business.Services
                 return hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
             }
         }
+        #endregion
+
     }
 }
