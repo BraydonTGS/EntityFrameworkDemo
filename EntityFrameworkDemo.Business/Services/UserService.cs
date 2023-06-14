@@ -10,6 +10,7 @@ namespace EntityFrameworkDemo.Business.Services
     public class UserService : IUserService
     {
         private readonly UserRepository _repository;
+        private readonly PasswordService _passwordService;
         private readonly IMapper _mapper;
         private readonly ILogger<UserService> _logger;
         public UserService(UserRepository repository, IMapper mapper, ILoggerFactory loggerFactory)
@@ -18,7 +19,7 @@ namespace EntityFrameworkDemo.Business.Services
             _mapper = mapper;
             _logger = loggerFactory.CreateLogger<UserService>();
         }
-        public Task<UserDto?> AddNewUser(UserDto user)
+        public Task<UserDto?> AddNewUser(UserDto user, string password)
         {
             throw new NotImplementedException();
         }

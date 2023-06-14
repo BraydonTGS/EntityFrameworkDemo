@@ -1,5 +1,5 @@
-﻿using EntityFrameworkDemo.Business.Interfaces;
-using EntityFrameworkDemo.Entity.Entities;
+﻿using EntityFrameworkDemo.Business.Dto;
+using EntityFrameworkDemo.Business.Interfaces;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -13,9 +13,9 @@ namespace EntityFrameworkDemo.Business.Services
         }
 
         #region EncryptPassword
-        public Password EncryptPassword(string password)
+        public PasswordDto EncryptPassword(string password)
         {
-            Password passwordDto = new Password();
+            PasswordDto passwordDto = new PasswordDto();
             passwordDto.Salt = GenerateSalt();
             passwordDto.Hash = HashPassword(password, passwordDto.Salt);
             return passwordDto;
@@ -23,7 +23,7 @@ namespace EntityFrameworkDemo.Business.Services
         #endregion
 
         #region GenerateSalt
-        public byte[] GenerateSalt()
+        private byte[] GenerateSalt()
         {
             byte[] salt = new byte[16];
             using (var rng = RandomNumberGenerator.Create())
@@ -36,7 +36,7 @@ namespace EntityFrameworkDemo.Business.Services
 
 
         #region HashPassword
-        public byte[] HashPassword(string password, byte[] salt)
+        private byte[] HashPassword(string password, byte[] salt)
         {
             using (var hmac = new HMACSHA512(salt))
             {

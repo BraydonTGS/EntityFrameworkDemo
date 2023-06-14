@@ -1,11 +1,9 @@
-﻿using EntityFrameworkDemo.Entity.Entities;
+﻿using EntityFrameworkDemo.Business.Dto;
 
 namespace EntityFrameworkDemo.Business.Interfaces
 {
     public interface IEncryptPasswordService
     {
-        Password EncryptPassword(string password);
-        byte[] GenerateSalt();
-        byte[] HashPassword(string password, byte[] salt);
+        public PasswordDto EncryptPassword(string password);
     }
 }
