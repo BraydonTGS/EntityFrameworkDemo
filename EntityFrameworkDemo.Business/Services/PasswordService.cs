@@ -22,12 +22,20 @@ namespace EntityFrameworkDemo.Business.Services
             _encryptionService = encryptionService;
 
         }
-        public async Task<PasswordDto?> CreatePasswordAsync(string password)
+        public async Task<PasswordDto?> CreatePasswordAsync(string password, int userId = 0)
         {
-            var results = _encryptionService.EncryptPassword(password);
-            var entity = _mapper.Map<Password>(results);
+            var secret = _encryptionService.EncryptPassword(password);
+
+            var entity = _mapper.Map<Password>(secret);
+
+            if (userId != 0)
+                entity.UserId = userId;
+
             var dto = await _repository.CreateAsync(entity);
-            return results;
+
+            var result = _mapper.Map<PasswordDto>(dto);
+
+            return result;
         }
 
         public Task<bool> DeletePasswordAsync(int id)
