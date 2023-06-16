@@ -25,16 +25,16 @@ namespace EntityFrameworkDemo.Business.Services
         {
             var entity = _mapper.Map<User>(user);
 
-            var dto = await _repository.CreateAsync(entity);
+            var result = await _repository.CreateAsync(entity);
 
-            if (dto == null)
+            if (result == null)
                 return null; 
 
-            var userPassword = _passwordService.CreatePasswordAsync(password, dto.Id);
+            var userPassword = _passwordService.CreatePasswordAsync(password, result.Id);
 
-            var result = _mapper.Map<UserDto>(userPassword);
+            var dto = _mapper.Map<UserDto>(userPassword);
 
-            return result; 
+            return dto; 
         }
 
         public Task<bool> DeleteUser(int id)
