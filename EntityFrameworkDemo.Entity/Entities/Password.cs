@@ -14,11 +14,11 @@ namespace EntityFrameworkDemo.Entity.Entities
         [Required]
         [Column("Hash")]
         [MaxLength(100)]
-        public byte[] Hash { get; set; } = new byte[0];
+        public byte[] Hash { get; set; } = Array.Empty<byte>();
 
         [Required]
         [Column("Salt")]
-        public byte[] Salt { get; set; } = new byte[0];
+        public byte[] Salt { get; set; } = Array.Empty<byte>();
 
         [ForeignKey("UserId")]
         [Column("UserId")]

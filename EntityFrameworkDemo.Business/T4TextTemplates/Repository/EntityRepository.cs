@@ -36,4 +36,28 @@ namespace EntityFrameworkDemo.Business.T4TextTemplates.Generated
 	}
 	#endregion
 
+	#region UserRepository
+	public partial class UserRepository : BaseRepository<User>
+	{
+		private readonly IDbContextFactory<SubSystemDbContext> _contextFactory;
+
+		public UserRepository(IDbContextFactory<SubSystemDbContext> contextFactory) : base(contextFactory)
+		{
+			_contextFactory = contextFactory;
+		}
+	}
+	#endregion
+
+	#region PasswordRepository
+	public partial class PasswordRepository : BaseRepository<Password>
+	{
+		private readonly IDbContextFactory<SubSystemDbContext> _contextFactory;
+
+		public PasswordRepository(IDbContextFactory<SubSystemDbContext> contextFactory) : base(contextFactory)
+		{
+			_contextFactory = contextFactory;
+		}
+	}
+	#endregion
+
 }
