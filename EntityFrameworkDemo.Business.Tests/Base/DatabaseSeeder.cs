@@ -15,6 +15,14 @@ namespace EntityFrameworkDemo.Business.Tests.Base
         #region SeedDatabase
         public async void Seed()
         {
+            var user = new User()
+            {
+                FirstName = "Sally",
+                LastName = "Sutherland",
+                Email = "Salmeaux@gmail.com",
+                UserName = "Froggy"
+            }; 
+
             var system = new SubSystem()
             {
                 Name = "SubSystem1",
@@ -30,6 +38,7 @@ namespace EntityFrameworkDemo.Business.Tests.Base
             system.Devices.Add(device2);
             system.Devices.Add(device3);
 
+            _dbContext.Users.Add(user);
             _dbContext.SubSystems.Add(system);
             _dbContext.Devices.Add(device1);
             _dbContext.Devices.Add(device2);

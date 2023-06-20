@@ -11,10 +11,10 @@ namespace EntityFrameworkDemo.Business.Services
     public class UserService : IUserService
     {
         private readonly UserRepository _repository;
-        private readonly PasswordService _passwordService;
+        private readonly IPasswordService _passwordService;
         private readonly IMapper _mapper;
         private readonly ILogger<UserService> _logger;
-        public UserService(UserRepository repository, IMapper mapper, ILoggerFactory loggerFactory, PasswordService passwordService)
+        public UserService(UserRepository repository, IMapper mapper, ILoggerFactory loggerFactory, IPasswordService passwordService)
         {
             _repository = repository;
             _mapper = mapper;
@@ -30,9 +30,9 @@ namespace EntityFrameworkDemo.Business.Services
             if (result == null)
                 return null; 
 
-            var userPassword = _passwordService.CreatePasswordAsync(password, result.Id);
+             await _passwordService.CreatePasswordAsync(password, result.Id);
 
-            var dto = _mapper.Map<UserDto>(userPassword);
+            var dto = _mapper.Map<UserDto>(result);
 
             return dto; 
         }

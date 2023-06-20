@@ -14,7 +14,7 @@ namespace EntityFrameworkDemo.Business.Services
         private readonly IMapper _mapper;
         private readonly ILogger<PasswordService> _logger;
         private readonly IEncryptPasswordService _encryptionService;
-        public PasswordService(PasswordRepository respository, IMapper mapper, ILoggerFactory loggerFactory, IEncryptPasswordService encryptionService)
+        public PasswordService(PasswordRepository respository, IMapper mapper, ILoggerFactory loggerFactory,  IEncryptPasswordService encryptionService)
         {
             _repository = respository;
             _mapper = mapper;

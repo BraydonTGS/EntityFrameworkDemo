@@ -37,8 +37,15 @@ namespace EntityFrameworkDemo.Business.Tests.Base
             services.AddSingleton(mapperConfig.CreateMapper());
             services.AddScoped<DeviceRepository>();
             services.AddScoped<SubSystemRepository>();
+            services.AddScoped<UserRepository>();
+            services.AddScoped<PasswordRepository>();
+
             services.AddScoped<IDeviceService, DeviceService>();
             services.AddScoped<ISubSystemService, SubSystemService>();
+            services.AddScoped<IEncryptPasswordService, EncryptPasswordService>();
+            services.AddScoped<IPasswordService, PasswordService>();
+            services.AddScoped<IUserService, UserService>();
+
             services.AddScoped<IDbContextValidationHelper, DbContextValidationHelper>();
             services.AddScoped<SubSystemDtoValidator>();
             services.AddScoped<DeviceDtoValidator>();
