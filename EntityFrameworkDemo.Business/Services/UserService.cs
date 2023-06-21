@@ -11,30 +11,26 @@ namespace EntityFrameworkDemo.Business.Services
     public class UserService : IUserService
     {
         private readonly UserRepository _repository;
-        private readonly IPasswordService _passwordService;
         private readonly IMapper _mapper;
         private readonly ILogger<UserService> _logger;
-        public UserService(UserRepository repository, IMapper mapper, ILoggerFactory loggerFactory, IPasswordService passwordService)
+        public UserService(UserRepository repository, IMapper mapper, ILoggerFactory loggerFactory)
         {
             _repository = repository;
             _mapper = mapper;
             _logger = loggerFactory.CreateLogger<UserService>();
-            _passwordService = passwordService;
         }
-        public async Task<UserDto?> AddNewUser(UserDto user, string password)
+        public async Task<UserDto?> AddNewUser(UserDto user)
         {
             var entity = _mapper.Map<User>(user);
 
             var result = await _repository.CreateAsync(entity);
 
             if (result == null)
-                return null; 
-
-             await _passwordService.CreatePasswordAsync(password, result.Id);
+                return null;
 
             var dto = _mapper.Map<UserDto>(result);
 
-            return dto; 
+            return dto;
         }
 
         public Task<bool> DeleteUser(int id)

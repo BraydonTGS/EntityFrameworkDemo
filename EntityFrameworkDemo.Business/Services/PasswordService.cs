@@ -22,7 +22,7 @@ namespace EntityFrameworkDemo.Business.Services
             _encryptionService = encryptionService;
 
         }
-        public async Task<PasswordDto?> CreatePasswordAsync(string password, int userId = 0)
+        public async Task<PasswordDto?> CreatePasswordAsync(string password = "", int userId = 0)
         {
             var secret = _encryptionService.EncryptPassword(password);
 

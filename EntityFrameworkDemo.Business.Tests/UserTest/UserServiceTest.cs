@@ -21,7 +21,7 @@ namespace EntityFrameworkDemo.Business.Tests.UserTest
         }
 
         [TestMethod]
-        public async Task RegisterNewUser_Success()
+        public async Task CreateNewUser_Success()
         {
             _databaseSeeder.Seed();
             var dto = UserServiceTestHelper.GenerateDto();
