@@ -51,7 +51,7 @@ namespace EntityFrameworkDemo.Business.Services
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred in GetSubSystemsAsync method.");
-                throw new AutoMapperMappingException(Constants.ErrorMappingToDevice, ex);
+                throw new AutoMapperMappingException(Constants.ErrorMappingToSubSystem, ex);
             }
 
         }

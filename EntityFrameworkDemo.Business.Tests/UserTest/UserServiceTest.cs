@@ -25,7 +25,7 @@ namespace EntityFrameworkDemo.Business.Tests.UserTest
         {
             _databaseSeeder.Seed();
             var dto = UserServiceTestHelper.GenerateDto();
-            var result = await _service.AddNewUser(dto, "Testing");
+            var result = await _service.AddNewUserAsync(dto);
             Assert.IsNotNull(result);   
             _databaseSeeder.Clear();
         }
