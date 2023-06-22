@@ -49,6 +49,7 @@ namespace EntityFrameworkDemo.Business.Tests.Base
             services.AddScoped<IDbContextValidationHelper, DbContextValidationHelper>();
             services.AddScoped<SubSystemDtoValidator>();
             services.AddScoped<DeviceDtoValidator>();
+            services.AddScoped<UserDtoValidator>();
 
             // Configure Logging //
             var loggerFactory = LoggingConfig.ConfigureLogging(services);

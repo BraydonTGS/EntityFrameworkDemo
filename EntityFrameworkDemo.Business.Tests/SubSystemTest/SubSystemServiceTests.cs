@@ -56,7 +56,7 @@ namespace EntityFrameworkDemo.Business.Tests.SubSystemTest
         public async Task CreateNewDevice_Failure_DeviceAlreadyExistsWithinSubSystem()
         {
             _databaseSeeder.Seed();
-            var dto = SubSystemServiceTestHelper.GenerateDuplicateDevice();
+            var dto = SubSystemServiceTestHelper.GenerateDuplicateSubSystem();
             await Assert.ThrowsExceptionAsync<InvalidOperationException>(async () => await _service.AddNewSubSystem(dto));
             _databaseSeeder.Clear();
         }

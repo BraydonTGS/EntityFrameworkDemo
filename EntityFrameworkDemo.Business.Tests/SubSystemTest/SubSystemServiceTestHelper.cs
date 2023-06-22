@@ -14,7 +14,7 @@ namespace EntityFrameworkDemo.Business.Tests.SubSystemTest
             return dto;
         }
 
-        public static SubSystemDto GenerateDuplicateDevice()
+        public static SubSystemDto GenerateDuplicateSubSystem()
         {
             var dto = new SubSystemDto()
             {

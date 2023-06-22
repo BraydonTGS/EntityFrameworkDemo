@@ -15,5 +15,17 @@ namespace EntityFrameworkDemo.Business.Tests.UserTest
             }; 
             return dto;
         }
+
+        public static UserDto GenerateDuplicateUser()
+        {
+            var dto = new UserDto()
+            {
+                FirstName = "Braydon",
+                LastName = "Sutherland",
+                UserName = "GeoMatix",
+                Email = "BradonTGS@gmail.com"
+            };
+            return dto;
+        }
     }
 }

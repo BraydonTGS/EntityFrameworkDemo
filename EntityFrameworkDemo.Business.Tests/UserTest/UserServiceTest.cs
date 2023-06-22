@@ -1,5 +1,6 @@
 ﻿using EntityFrameworkDemo.Business.Interfaces;
 using EntityFrameworkDemo.Business.Tests.Base;
+using EntityFrameworkDemo.Business.Tests.SubSystemTest;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EntityFrameworkDemo.Business.Tests.UserTest
@@ -21,12 +22,63 @@ namespace EntityFrameworkDemo.Business.Tests.UserTest
         }
 
         [TestMethod]
-        public async Task CreateNewUser_Success()
+        public async Task GetAll_Success()
+        {
+            _databaseSeeder.Seed();
+            var result = await _service.GetAllUsersAsync();
+            Assert.IsNotNull(result);
+            Assert.AreEqual(2, result.Count());
+            _databaseSeeder.Clear();
+        }
+
+        [TestMethod]
+        public async Task GetById_Success()
+        {
+            _databaseSeeder.Seed();
+            var result = await _service.GetUserByIdAsync(1);
+            Assert.IsNotNull(result);
+            Assert.AreEqual(1, result.Id);
+            Assert.AreEqual("Sally", result.FirstName);
+            Assert.AreEqual("Sutherland", result.LastName);
+            _databaseSeeder.Clear();
+        }
+
+        [TestMethod]
+        public async Task CreateNewDevice_Success()
         {
             _databaseSeeder.Seed();
             var dto = UserServiceTestHelper.GenerateDto();
             var result = await _service.AddNewUserAsync(dto);
-            Assert.IsNotNull(result);   
+            Assert.IsNotNull(result);
+            _databaseSeeder.Clear();
+        }
+
+        [TestMethod]
+        public async Task CreateNewDevice_Failure_DeviceAlreadyExistsWithinSubSystem()
+        {
+            _databaseSeeder.Seed();
+            var dto = UserServiceTestHelper.GenerateDuplicateUser();
+            await Assert.ThrowsExceptionAsync<InvalidOperationException>(async () => await _service.AddNewUserAsync(dto));
+            _databaseSeeder.Clear();
+        }
+
+        [TestMethod]
+        public async Task DeleteDeviceById_Success()
+        {
+            _databaseSeeder.Seed();
+            var result = await _service.DeleteUserAsync(1);
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result);
+            _databaseSeeder.Clear();
+        }
+
+        [TestMethod]
+        public async Task DeleteDeviceById_Failure()
+        {
+            _databaseSeeder.Seed();
+            var result = await _service.DeleteUserAsync(5);
+            Assert.IsNotNull(result);
+            Assert.IsFalse(result);
             _databaseSeeder.Clear();
         }
     }
