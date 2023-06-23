@@ -28,7 +28,7 @@ namespace EntityFrameworkDemo.Business.Tests.Base
                 FirstName = "Braydon",
                 LastName = "Sutherland",
                 Email = "BraydonSutherland@gmail.com",
-                UserName = "GeoMatics"
+                UserName = "GeoMatix"
             };
 
             var system = new SubSystem()

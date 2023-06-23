@@ -43,7 +43,7 @@ namespace EntityFrameworkDemo.Business.Tests.SubSystemTest
         }
 
         [TestMethod]
-        public async Task CreateNewDevice_Success()
+        public async Task CreateNewSubSystem_Success()
         {
             _databaseSeeder.Seed();
             var dto = SubSystemServiceTestHelper.GenerateDto();
@@ -53,7 +53,7 @@ namespace EntityFrameworkDemo.Business.Tests.SubSystemTest
         }
 
         [TestMethod]
-        public async Task CreateNewDevice_Failure_DeviceAlreadyExistsWithinSubSystem()
+        public async Task CreateNewSubSystem_Failure_SubSystemAlreadyExists()
         {
             _databaseSeeder.Seed();
             var dto = SubSystemServiceTestHelper.GenerateDuplicateSubSystem();
@@ -62,7 +62,7 @@ namespace EntityFrameworkDemo.Business.Tests.SubSystemTest
         }
 
         [TestMethod]
-        public async Task DeleteDeviceById_Success()
+        public async Task DeleteSubSystemById_Success()
         {
             _databaseSeeder.Seed();
             var result = await _service.DeleteSubSystem(1);
@@ -72,7 +72,7 @@ namespace EntityFrameworkDemo.Business.Tests.SubSystemTest
         }
 
         [TestMethod]
-        public async Task DeleteDeviceById_Failure()
+        public async Task DeleteSubSystemById_Failure()
         {
             _databaseSeeder.Seed();
             var result = await _service.DeleteSubSystem(5);

@@ -1,6 +1,5 @@
 ﻿using EntityFrameworkDemo.Business.Interfaces;
 using EntityFrameworkDemo.Business.Tests.Base;
-using EntityFrameworkDemo.Business.Tests.SubSystemTest;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EntityFrameworkDemo.Business.Tests.UserTest
@@ -44,7 +43,7 @@ namespace EntityFrameworkDemo.Business.Tests.UserTest
         }
 
         [TestMethod]
-        public async Task CreateNewDevice_Success()
+        public async Task CreateNewUser_Success()
         {
             _databaseSeeder.Seed();
             var dto = UserServiceTestHelper.GenerateDto();
@@ -54,7 +53,7 @@ namespace EntityFrameworkDemo.Business.Tests.UserTest
         }
 
         [TestMethod]
-        public async Task CreateNewDevice_Failure_DeviceAlreadyExistsWithinSubSystem()
+        public async Task CreateNewUser_Failure_UserNameAlreadyExists()
         {
             _databaseSeeder.Seed();
             var dto = UserServiceTestHelper.GenerateDuplicateUser();
@@ -63,7 +62,7 @@ namespace EntityFrameworkDemo.Business.Tests.UserTest
         }
 
         [TestMethod]
-        public async Task DeleteDeviceById_Success()
+        public async Task DeleteUserById_Success()
         {
             _databaseSeeder.Seed();
             var result = await _service.DeleteUserAsync(1);
@@ -73,7 +72,7 @@ namespace EntityFrameworkDemo.Business.Tests.UserTest
         }
 
         [TestMethod]
-        public async Task DeleteDeviceById_Failure()
+        public async Task DeleteUserById_Failure()
         {
             _databaseSeeder.Seed();
             var result = await _service.DeleteUserAsync(5);

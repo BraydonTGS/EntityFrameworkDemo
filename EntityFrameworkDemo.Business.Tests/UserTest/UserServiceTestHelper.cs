@@ -8,11 +8,11 @@ namespace EntityFrameworkDemo.Business.Tests.UserTest
         {
             var dto = new UserDto()
             {
-                FirstName = "Braydon",
+                FirstName = "Colin",
                 LastName = "Sutherland",
-                UserName = "GeoMatix",
-                Email = "BradonTGS@gmail.com"
-            }; 
+                UserName = "CollyWolly",
+                Email = "CollyWolly@gmail.com"
+            };  
             return dto;
         }
 
