@@ -17,7 +17,7 @@ namespace EntityFrameworkDemo.Business.Validations.Dto
             RuleFor(x => x.Email).NotEmpty().EmailAddress();
             RuleFor(x => x.UserName).NotEmpty().MinimumLength(8).MaximumLength(25);
 
-            RuleFor(x => x).MustAsync((x, cancellation) => _validationHelper.IsUniqueWithinEntity<User>(u => u.UserName == x.UserName)).WithMessage(Global.Constants.SubSystemAlreadyExists);
+            RuleFor(x => x).MustAsync((x, cancellation) => _validationHelper.IsUniqueWithinEntity<User>(u => u.UserName == x.UserName)).WithMessage(Global.Constants.UserNameAlreadyExists);
         }
     }
 }

@@ -59,5 +59,4 @@ namespace EntityFrameworkDemo.Business.T4TextTemplates.Generated
 		}
 	}
 	#endregion
-
 }

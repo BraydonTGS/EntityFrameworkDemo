@@ -11,6 +11,7 @@
         #region Validations
         public static string DeviceAlreadyExistsWithinSystem = "{PropertyName}, {PropertyValue} already exists within the SubSystem.";
         public static string SubSystemAlreadyExists = "{PropertyName}, {PropertyValue} already exists in the SubSystem Table.";
+        public static string UserNameAlreadyExists = "{PropertyName}, {PropertyValue} already exists in the User Table.";
         #endregion
     }
 }

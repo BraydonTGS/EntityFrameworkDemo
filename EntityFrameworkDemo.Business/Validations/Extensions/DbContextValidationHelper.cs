@@ -14,11 +14,12 @@ namespace EntityFrameworkDemo.Business.Validations.Extensions
         }
 
         #region DoesExist
-        public async Task<bool> DoesExist<TEntity>(Expression<Func<TEntity, bool>> id) where TEntity : class
+        public async Task<bool> DoesExist<TEntity>(object id) where TEntity : class
         {
             var entity = _context.Set<TEntity>();
-            var result = await entity.AnyAsync(id);
-            return result;
+            var result = await entity.FindAsync(id);
+            if(result == null) return true;
+            return false;
         }
         #endregion
 
