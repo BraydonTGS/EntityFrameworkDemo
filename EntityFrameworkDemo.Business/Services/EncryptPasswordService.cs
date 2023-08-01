@@ -5,6 +5,9 @@ using System.Text;
 
 namespace EntityFrameworkDemo.Business.Services
 {
+    /// <summary>
+    /// Generate an Encrypted Password using Salting and Hashing
+    /// </summary>
     public class EncryptPasswordService : IEncryptPasswordService
     {
         public EncryptPasswordService()
