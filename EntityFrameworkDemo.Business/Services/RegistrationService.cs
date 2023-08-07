@@ -4,11 +4,11 @@ namespace EntityFrameworkDemo.Business.Services
 {
     public class RegistrationService
     {
-        IEncryptPasswordService _encryptService;
+        IPasswordService _passwordService;
         IUserService _userService;
-        public RegistrationService(IEncryptPasswordService encryptService, IUserService userService)
+        public RegistrationService(IPasswordService passwordService, IUserService userService)
         {
-            _encryptService = encryptService;
+            _passwordService = passwordService;
             _userService = userService;
 
         }

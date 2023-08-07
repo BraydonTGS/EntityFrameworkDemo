@@ -6,6 +6,7 @@
         public static string ErrorMappingToDevice = $"Error Mapping from Device Entity to Device Dto";
         public static string ErrorMappingToSubSystem = $"Error Mapping from SubSystem Entity to SubSystem Dto";
         public static string ErrorMappingToUser = $"Error Mapping from User Entity to User Dto";
+        public static string ErrorMappingToPassword = $"Error Mapping from Password Entity to Password Dto";
         #endregion
 
         #region Validations
