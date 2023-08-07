@@ -25,16 +25,33 @@ namespace EntityFrameworkDemo.Business.Services
         }
         public async Task<PasswordDto?> CreatePasswordAsync(string password = "", int userId = 0)
         {
-            var secret = _encryptionService.EncryptPassword(password);
+            try
+            {
+                using (_logger.BeginScope("DeletePasswordAsync"))
+                {
+                    _logger.LogInformation($"Encrypting Password for User with Id: {userId}");
+                    var secret = _encryptionService.EncryptPassword(password);
 
-            var entity = _mapper.Map<Password>(secret);
+                    _logger.LogInformation($"Encrypted Password Generated Successfully");
+                    var entity = _mapper.Map<Password>(secret);
 
-            if (userId != 0)
-                entity.UserId = userId;
+                    if (userId != 0)
+                        entity.UserId = userId;
 
-            var result = await _repository.CreateAsync(entity);
+                    _logger.LogInformation($"Adding Encrypted Password to the Database with User Id: {userId}");
+                    var result = await _repository.CreateAsync(entity);
 
-            return _mapper.Map<PasswordDto>(result);
+                    _logger.LogInformation($"Successfully Created Password for User with the Id: {userId}");
+                    return _mapper.Map<PasswordDto>(result);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred in Create method.");
+                throw new InvalidOperationException(ex.Message);
+            }
+
         }
 
         public async Task<bool> DeletePasswordAsync(int id)
