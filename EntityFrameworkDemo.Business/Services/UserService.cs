@@ -115,7 +115,7 @@ namespace EntityFrameworkDemo.Business.Services
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred in AddNewUserAsync method.");
-                throw new InvalidOperationException(Constants.ErrorMappingToSubSystem, ex);
+                throw new InvalidOperationException(Constants.ErrorMappingToUser, ex);
             }
 
         }

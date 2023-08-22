@@ -13,6 +13,7 @@ namespace EntityFrameworkDemo.Business.Tests.RegistrationTest
 
         private readonly IServiceCollection _services;
         private readonly IServiceProvider _serviceProvider;
+        private readonly IUserService _userService;
         private readonly IRegistrationService _service;
 
         private readonly DatabaseSeeder _databaseSeeder;
@@ -21,6 +22,7 @@ namespace EntityFrameworkDemo.Business.Tests.RegistrationTest
             _services = ConfigureServices(seedDatabase: true);
             _serviceProvider = _services.BuildServiceProvider();
             _service = _serviceProvider.GetRequiredService<IRegistrationService>();
+            _userService = _serviceProvider.GetRequiredService<IUserService>();
             _databaseSeeder = _serviceProvider.GetRequiredService<DatabaseSeeder>();
         }
 
@@ -36,6 +38,21 @@ namespace EntityFrameworkDemo.Business.Tests.RegistrationTest
             Assert.IsNotNull(results);
             Assert.IsTrue(results);
 
+        }
+
+        [TestMethod]
+        public async Task RegisterNewUser_UserAlreadyExists_Success()
+        {
+            _databaseSeeder.Seed();
+
+            var user = UserServiceTestHelper.GenerateDto();
+            var duplicatedUser = UserServiceTestHelper.GenerateDuplicateUser();
+
+            var userService = await _userService.AddNewUserAsync(user);
+
+            var password = PasswordServiceTestHelper.GeneratePassword();  
+           
+           await Assert.ThrowsExceptionAsync<InvalidOperationException>(async () => await _service.RegisterNewUser(duplicatedUser, password));
         }
 
     }
