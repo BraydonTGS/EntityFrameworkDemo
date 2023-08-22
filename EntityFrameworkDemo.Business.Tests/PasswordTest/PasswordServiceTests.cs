@@ -34,5 +34,25 @@ namespace EntityFrameworkDemo.Business.Tests.PasswordTest
             _databaseSeeder.Clear(); 
         }
 
+        [TestMethod]
+
+        public async Task DeletePassword_Success()
+        {
+            _databaseSeeder.Seed();
+            var password = PasswordServiceTestHelper.GeneratePassword();
+            var passwordDto = await _service.CreatePasswordAsync(password);
+
+            Assert.IsNotNull(passwordDto);
+            Assert.IsNotNull(passwordDto.Hash);
+            Assert.IsNotNull(passwordDto.Salt);
+
+            var results = await _service.DeletePasswordAsync(passwordDto.Id);
+
+            Assert.IsNotNull(results);
+            Assert.IsTrue(results);
+
+            _databaseSeeder.Clear();
+        }
+
     }
 }

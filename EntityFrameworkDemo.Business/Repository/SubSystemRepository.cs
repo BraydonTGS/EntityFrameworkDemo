@@ -13,5 +13,7 @@ namespace EntityFrameworkDemo.Business.Repository
         {
             _contextFactory = contextFactory;
         }
+
+
     }
 }
