@@ -44,6 +44,7 @@ namespace EntityFrameworkDemo.Business.Tests.Base
             services.AddScoped<ISubSystemService, SubSystemService>();
             services.AddScoped<IEncryptPasswordService, EncryptPasswordService>();
             services.AddScoped<IPasswordService, PasswordService>();
+            services.AddScoped<IRegistrationService, RegistrationService>();
             services.AddScoped<IUserService, UserService>();
 
             services.AddScoped<IDbContextValidationHelper, DbContextValidationHelper>();
