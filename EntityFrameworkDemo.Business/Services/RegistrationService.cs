@@ -17,7 +17,7 @@ namespace EntityFrameworkDemo.Business.Services
         }
 
         /// <summary>
-        /// Todo: Add Logging, Exception Handling, Method Summary
+        /// Register a New User within the application
         /// </summary>
         /// <param name="user"></param>
         /// <param name="password"></param>
