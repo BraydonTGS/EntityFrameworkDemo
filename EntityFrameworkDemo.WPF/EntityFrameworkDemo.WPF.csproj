@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EntityFrameworkDemo.Business\EntityFrameworkDemo.Business.csproj" />
   </ItemGroup>
 
