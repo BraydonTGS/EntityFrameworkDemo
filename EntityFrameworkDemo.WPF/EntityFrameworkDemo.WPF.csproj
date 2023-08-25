@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EntityFrameworkDemo.Business\EntityFrameworkDemo.Business.csproj" />
+    <ProjectReference Include="..\ModuleA\ModuleA.csproj" />
   </ItemGroup>
 
   <ItemGroup>

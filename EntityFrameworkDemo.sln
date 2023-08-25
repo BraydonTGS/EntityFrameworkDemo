@@ -15,7 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkDemo.Busines
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkDemo.Global", "EntityFrameworkDemo.Global\EntityFrameworkDemo.Global.csproj", "{0B7EAFDB-57C9-4BAA-B4B5-8AE00143AE89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDemo.WPF", "EntityFrameworkDemo.WPF\EntityFrameworkDemo.WPF.csproj", "{78D375A0-7492-408A-98CB-97022725C52A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkDemo.WPF", "EntityFrameworkDemo.WPF\EntityFrameworkDemo.WPF.csproj", "{78D375A0-7492-408A-98CB-97022725C52A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{2920F169-1050-4D4D-A396-9A4D3ED8A1B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleA", "ModuleA\ModuleA.csproj", "{580405C3-E072-4ED5-821F-745BA043CC5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +47,10 @@ Global
 		{78D375A0-7492-408A-98CB-97022725C52A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78D375A0-7492-408A-98CB-97022725C52A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78D375A0-7492-408A-98CB-97022725C52A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{580405C3-E072-4ED5-821F-745BA043CC5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{580405C3-E072-4ED5-821F-745BA043CC5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{580405C3-E072-4ED5-821F-745BA043CC5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{580405C3-E072-4ED5-821F-745BA043CC5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +61,8 @@ Global
 		{CAAD940D-A719-4DE4-A285-C52EADF31DDC} = {FFDC0338-6044-4F0E-B1A0-F3F4C03EF2BB}
 		{0B7EAFDB-57C9-4BAA-B4B5-8AE00143AE89} = {543445B3-2D3F-46A0-9934-2E71DAD9D309}
 		{78D375A0-7492-408A-98CB-97022725C52A} = {543445B3-2D3F-46A0-9934-2E71DAD9D309}
+		{2920F169-1050-4D4D-A396-9A4D3ED8A1B5} = {543445B3-2D3F-46A0-9934-2E71DAD9D309}
+		{580405C3-E072-4ED5-821F-745BA043CC5C} = {2920F169-1050-4D4D-A396-9A4D3ED8A1B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3250C57B-61D7-44A8-BBB8-C658CAF149D7}
