@@ -1,9 +1,10 @@
-﻿using EntityFrameworkDemo.Business.Config;
-using Microsoft.Extensions.DependencyInjection;
+﻿using EntityFrameworkDemo.WPF.Core.Regions;
+using EntityFrameworkDemo.WPF.Views;
 using Prism.DryIoc;
 using Prism.Ioc;
-using System;
+using Prism.Regions;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace EntityFrameworkDemo.WPF
 {
@@ -11,12 +12,18 @@ namespace EntityFrameworkDemo.WPF
     {
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            throw new NotImplementedException();
+
         }
 
         protected override Window CreateShell()
         {
-            throw new NotImplementedException();
+            return Container.Resolve<MainWindow>();
+        }
+
+        protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)
+        {
+            base.ConfigureRegionAdapterMappings(regionAdapterMappings);
+            regionAdapterMappings.RegisterMapping(typeof(StackPanel), Container.Resolve<StackPanelRegionAdapter>());
         }
     }
 }

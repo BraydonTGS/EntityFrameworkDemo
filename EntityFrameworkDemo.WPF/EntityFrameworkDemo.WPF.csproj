@@ -15,4 +15,8 @@
     <ProjectReference Include="..\EntityFrameworkDemo.Business\EntityFrameworkDemo.Business.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
 </Project>
