@@ -10,6 +10,7 @@ namespace EntityFrameworkDemo.WPF.Core.Regions
         {
 
         }
+
         /// <summary>
         /// Any Time a New View is Added to this Region, The Collection Changed Event Will be Invoked.
         /// We then check the Action

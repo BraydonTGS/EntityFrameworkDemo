@@ -11,6 +11,6 @@
     Height="450"
     mc:Ignorable="d">
     <Grid>
-        <StackPanel prism:RegionManager.RegionName="ContentControl" />
+        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
     </Grid>
 </Window>
