@@ -1,4 +1,7 @@
-﻿using EntityFrameworkDemo.WPF.Core.Regions;
+﻿using DryIoc;
+using EntityFrameworkDemo.Business.Interfaces;
+using EntityFrameworkDemo.Business.Services;
+using EntityFrameworkDemo.WPF.Core.Regions;
 using EntityFrameworkDemo.WPF.Views;
 using ModuleA;
 using Prism.DryIoc;
@@ -39,6 +42,12 @@ namespace EntityFrameworkDemo.WPF
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
             moduleCatalog.AddModule<DeviceModule>();
+        }
+
+        protected override void RegisterRequiredTypes(IContainerRegistry containerRegistry)
+        {
+            containerRegistry.Register<IDeviceService, DeviceService>(); 
+            base.RegisterRequiredTypes(containerRegistry);
         }
     }
 }

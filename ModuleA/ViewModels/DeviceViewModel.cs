@@ -7,17 +7,25 @@ namespace ModuleA.ViewModels
     public class DeviceViewModel : BindableBase
     {
         #region Private Fields
-        private DeviceService _service;
+        private DeviceDto _model;
         #endregion
 
         #region Public Properties
-        public DeviceDto Model { get; set; }
+        public DeviceDto Model
+        {
+            get => _model;
+            set => SetProperty(ref _model, value);
+        }
         #endregion
 
-        public DeviceViewModel(DeviceService service)
+        public DeviceViewModel()
         {
-            _service = service;
-            Model = new DeviceDto();
+           
+            Model = new DeviceDto()
+            {
+                Name = "Device One", 
+                Description = "Testing View Model Device One"
+            };
         }
 
 

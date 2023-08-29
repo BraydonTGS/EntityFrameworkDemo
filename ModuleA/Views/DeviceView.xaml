@@ -16,6 +16,6 @@
             VerticalAlignment="Center"
             FontSize="50"
             FontWeight="Bold"
-            Text="{Binding Title}" />
+            Text="{Binding Model.Name}" />
     </Grid>
 </UserControl>
