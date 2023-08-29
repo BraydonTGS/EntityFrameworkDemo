@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
+    <PackageReference Include="Prism.Wpf" Version="8.1.97" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Prism.Wpf" Version="8.1.97" />
+    <ProjectReference Include="..\EntityFrameworkDemo.Business\EntityFrameworkDemo.Business.csproj" />
   </ItemGroup>
 
 </Project>

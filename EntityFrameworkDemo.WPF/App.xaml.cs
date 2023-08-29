@@ -38,7 +38,7 @@ namespace EntityFrameworkDemo.WPF
         /// <param name="moduleCatalog"></param>
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-            moduleCatalog.AddModule<ModuleAModule>();
+            moduleCatalog.AddModule<DeviceModule>();
         }
     }
 }

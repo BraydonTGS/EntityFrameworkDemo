@@ -1,29 +1,30 @@
-﻿using ModuleA.Views;
+﻿using ModuleA.ViewModels;
+using ModuleA.Views;
 using Prism.Ioc;
 using Prism.Modularity;
+using Prism.Mvvm;
 using Prism.Regions;
 
 namespace ModuleA
 {
-    public class ModuleAModule : IModule
+    public class DeviceModule : IModule
     {
         private readonly IRegionManager _regionManager;
 
-        public ModuleAModule(IRegionManager regionManager)
+        public DeviceModule(IRegionManager regionManager)
         {
             _regionManager = regionManager;
         }
         public void OnInitialized(IContainerProvider containerProvider)
         {
             IRegion region = _regionManager.Regions["ContentRegion"];
-
-            var viewA = containerProvider.Resolve<ViewA>();
-            region.Add(viewA);
+            var deviceView = containerProvider.Resolve<DeviceView>();
+            region.Add(deviceView);
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            
+            ViewModelLocationProvider.Register<DeviceView, DeviceViewModel>();
         }
     }
 }
