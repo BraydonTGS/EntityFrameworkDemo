@@ -6,7 +6,7 @@ namespace EntityFrameworkDemo.Business.Interfaces
     {
         Task<SubSystemDto?> AddNewSubSystem(SubSystemDto subSystem);
         Task<bool> DeleteSubSystem(int id);
-        Task<SubSystemDto?> GetSubSystemById(int id);
+        Task<SubSystemDto?> GetByIdAsyncIncludeDevice(int id);
         Task<IEnumerable<SubSystemDto>?> GetSubSystemsAsync();
     }
 }

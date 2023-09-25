@@ -15,5 +15,25 @@ namespace EntityFrameworkDemo.Business.Repository
         }
 
 
+        #region GetByIdAsyncIncludeDevice
+        public async Task<SubSystem?> GetByIdAsyncIncludeDevice(int id)
+        {
+            try
+            {
+                var context = _contextFactory.CreateDbContext().Set<SubSystem>();
+                var entity = await context.Include(x => x.Devices).Where(x => x.Id == id).FirstOrDefaultAsync();
+
+                if (entity == null)
+                {
+                    return null;
+                }
+                return entity;
+            }
+            catch (Exception ex) { throw new Exception(ex.Message); }
+
+        }
+        #endregion
+
+
     }
 }

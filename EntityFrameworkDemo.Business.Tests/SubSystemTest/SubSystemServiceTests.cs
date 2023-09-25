@@ -34,7 +34,7 @@ namespace EntityFrameworkDemo.Business.Tests.SubSystemTest
         public async Task GetById_Success()
         {
             _databaseSeeder.Seed();
-            var result = await _service.GetSubSystemById(1);
+            var result = await _service.GetByIdAsyncIncludeDevice(1);
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Id);
             Assert.AreEqual("SubSystem1", result.Name);

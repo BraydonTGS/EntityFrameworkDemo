@@ -57,15 +57,15 @@ namespace EntityFrameworkDemo.Business.Services
         }
         #endregion
 
-        #region GetSubSystemById
-        public async Task<SubSystemDto?> GetSubSystemById(int id)
+        #region GetByIdAsyncIncludeDevice
+        public async Task<SubSystemDto?> GetByIdAsyncIncludeDevice(int id)
         {
             try
             {
                 using (_logger.BeginScope("GetSubSystemById"))
                 {
                     _logger.LogInformation($"Calling SubSystem Repository GetByIdAsync with SubSystem Id: {id}.");
-                    var entity = await _repository.GetByIdAsync(id);
+                    var entity = await _repository.GetByIdAsyncIncludeDevice(id);
                     if (entity == null)
                     {
                         _logger.LogInformation($"No SubSystem with Id: {id} Found.");
