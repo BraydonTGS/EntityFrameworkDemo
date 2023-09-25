@@ -46,10 +46,7 @@ The `Tests` project contains unit tests for the services in the application. The
 The `Global` project serves as a central place for common files used across the application. It includes the following components:
 
 - **Constants Class:** A Constants class that contains strings used across the application. This allows for centralized management and easy access to shared values.
-
-### WPF Project
-- **Services are Registered**: User Interface is in Progress. 
-
+- 
 ## Technologies Used
 
 - **.NET 6:** The project is built using the .NET 6 framework, which provides the latest features and improvements for developing robust applications.
