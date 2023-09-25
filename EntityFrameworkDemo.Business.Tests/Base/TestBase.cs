@@ -24,7 +24,7 @@ namespace EntityFrameworkDemo.Business.Tests.Base
             services.AddDbContext<SubSystemDbContext>(options =>
             {
                 options.UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString());
-                options.UseLazyLoadingProxies();
+                options.UseLazyLoadingProxies(false);
             }, ServiceLifetime.Transient);
 
             services.AddDbContextFactory<SubSystemDbContext>();

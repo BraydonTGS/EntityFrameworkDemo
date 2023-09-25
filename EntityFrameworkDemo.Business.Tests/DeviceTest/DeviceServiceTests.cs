@@ -26,7 +26,6 @@ namespace EntityFrameworkDemo.Business.Tests.DeviceTest
         {
             _databaseSeeder.Seed();
             var result = await _service.GetDevicesAsync();
-            var testing = _serviceProvider.GetRequiredService<ILoggerFactory>(); 
 
             Assert.IsNotNull(result);
             Assert.AreEqual(3, result.Count());

@@ -12,7 +12,7 @@ namespace EntityFrameworkDemo.Business.Validations.Dto
         {
             _validationHelper = validationHelper;
 
-            RuleFor(x => x.Name).NotNull().NotEmpty();
+            RuleFor(x => x.Name).NotNull().NotEmpty().MaximumLength(20);
             RuleFor(x => x.Description).NotNull().NotEmpty();
             RuleFor(x => x).MustAsync((x, cancellation) => _validationHelper.IsUniqueWithinEntity<Device>(e => e.SubSystemId == x.SubSystemId && e.Name == x.Name)).WithMessage(Global.Constants.DeviceAlreadyExistsWithinSystem);
         }

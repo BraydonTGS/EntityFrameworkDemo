@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EntityFrameworkDemo.Business.Base
 {
-    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
+    public class BaseRepository<TEntity > : IBaseRepository<TEntity> where TEntity : class
     {
         private readonly IDbContextFactory<SubSystemDbContext> _contextFactory;
 
